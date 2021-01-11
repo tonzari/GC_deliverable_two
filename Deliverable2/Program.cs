@@ -33,6 +33,7 @@ namespace Deliverable2
                 {
                     Console.WriteLine("Please enter a number next time.");
                 }
+
                 Console.WriteLine("\n");
             }
 
@@ -79,8 +80,6 @@ namespace Deliverable2
                 {
                     Console.WriteLine($"Sorry, you entered \"{headsOrTailsGuess}\", which is not a valid guess! Please only enter: heads or tails.");
                 }
-
-
             }
 
             double ProcessScore()
@@ -127,7 +126,6 @@ namespace Deliverable2
                 return result;
             }
             #endregion
-
         }
     }
 }
