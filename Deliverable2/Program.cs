@@ -64,7 +64,7 @@ namespace Deliverable2
             {
                 string timesGrammar = "times";
 
-                if (numberOfFlips == 1)
+                if (correctCount == 1)
                 {
                     timesGrammar = "time";
                 }
