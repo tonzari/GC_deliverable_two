@@ -8,7 +8,8 @@ namespace Deliverable2
         {
             // Init
             string headsOrTailsGuess;
-            int numberOfFlips;
+            string numberOfFlipsInput;
+            int numberOfFlips = 0;
             int correctCount = 0;
             Random rnd = new Random();
 
@@ -23,7 +24,15 @@ namespace Deliverable2
                 Console.Write("Guess which will have more: heads or tails? ");
                 headsOrTailsGuess = Console.ReadLine();
                 Console.Write("How many times shall we flip a coin? ");
-                numberOfFlips = Convert.ToInt32(Console.ReadLine());
+                numberOfFlipsInput = Console.ReadLine();
+                if (Int32.TryParse(numberOfFlipsInput, out int result))
+                {
+                    numberOfFlips = result;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a number next time.");
+                }
                 Console.WriteLine("\n");
             }
 
@@ -40,7 +49,7 @@ namespace Deliverable2
                 {
                     flipResult = FlipCoin();
 
-                    Console.WriteLine(ConvertBoolToCoinWords(flipResult));
+                    Console.WriteLine((i+1) + ". " + ConvertBoolToCoinWords(flipResult));
 
                     if (ConvertCoinWordsToBool(headsOrTailsGuess) == flipResult)
                     {
@@ -76,9 +85,14 @@ namespace Deliverable2
 
             double ProcessScore()
             {
-                Console.WriteLine(correctCount);
-                Console.WriteLine(numberOfFlips);
-                return Math.Round((correctCount / (double)numberOfFlips) * 100, 2);
+                if (correctCount != 0 || numberOfFlips != 0) // Avoiding dividing by zero
+                {
+                    return Math.Round((correctCount / (double)numberOfFlips) * 100, 2);
+                }
+                else
+                {
+                    return 0;
+                }
             }
 
             bool ConvertCoinWordsToBool(string coinGuess)
