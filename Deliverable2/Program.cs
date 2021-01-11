@@ -37,7 +37,7 @@ namespace Deliverable2
                 Console.WriteLine("\n");
             }
 
-            bool FlipCoin()
+            bool GenerateRandomBoolValue()
             {
                 return rnd.Next(2) == 0;
             }
@@ -48,7 +48,7 @@ namespace Deliverable2
 
                 for (int i = 0; i < numberOfFlips; i++)
                 {
-                    flipResult = FlipCoin();
+                    flipResult = GenerateRandomBoolValue();
 
                     Console.WriteLine((i+1) + ". " + ConvertBoolToCoinWords(flipResult));
 
