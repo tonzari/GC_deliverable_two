@@ -6,8 +6,9 @@ namespace Deliverable2
     {
         static void Main(string[] args)
         {
-            string headsOrTailsGuess = System.String.Empty;
-            int numberOfFlips = 0;
+            // Init
+            string headsOrTailsGuess;
+            int numberOfFlips;
             int correctCount = 0;
             Random rnd = new Random();
 
@@ -17,6 +18,20 @@ namespace Deliverable2
             PrintPlayerScore();
 
             #region Methods
+            void GetUserInput()
+            {
+                Console.Write("Guess which will have more: heads or tails? ");
+                headsOrTailsGuess = Console.ReadLine();
+                Console.Write("How many times shall we flip a coin? ");
+                numberOfFlips = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\n");
+            }
+
+            bool FlipCoin()
+            {
+                return rnd.Next(2) == 0;
+            }
+
             void ProcessCoinFlips()
             {
                 bool flipResult;
@@ -32,6 +47,8 @@ namespace Deliverable2
                         correctCount++;
                     }
                 }
+
+                Console.WriteLine("\n");
             }
 
             void PrintPlayerScore()
@@ -43,28 +60,25 @@ namespace Deliverable2
                     timesGrammar = "time";
                 }
 
-                Console.WriteLine($"Your guess, {headsOrTailsGuess}, came up {correctCount} {timesGrammar}.");
-                Console.WriteLine($"That's {ProcessScore()}%.");
+                if (headsOrTailsGuess.Equals("heads") | headsOrTailsGuess.Equals("tails"))
+                {
+                    Console.WriteLine($"Your guess, {headsOrTailsGuess}, came up {correctCount} {timesGrammar}.");
+                    Console.WriteLine($"That's {ProcessScore()}%.");
+                    Console.WriteLine("\n");
+                }
+                else
+                {
+                    Console.WriteLine($"Sorry, you entered \"{headsOrTailsGuess}\", which is not a valid guess! Please only enter: heads or tails.");
+                }
+
+
             }
 
             double ProcessScore()
             {
                 Console.WriteLine(correctCount);
                 Console.WriteLine(numberOfFlips);
-                return Math.Round((correctCount / (double)numberOfFlips) * 100);
-            }
-
-            void GetUserInput()
-            {
-                Console.Write("Guess which  will have more: heads or tails? ");
-                headsOrTailsGuess = Console.ReadLine();
-                Console.Write("How many times shall we flip a coin? ");
-                numberOfFlips = Convert.ToInt32(Console.ReadLine());
-            }
-
-            bool FlipCoin()
-            {
-                return rnd.Next(2) == 0;
+                return Math.Round((correctCount / (double)numberOfFlips) * 100, 2);
             }
 
             bool ConvertCoinWordsToBool(string coinGuess)
