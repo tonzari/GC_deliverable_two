@@ -63,16 +63,16 @@ namespace Deliverable2
 
             void PrintPlayerScore()
             {
-                string timesGrammar = "times";
+                string timesOrTimeSpelling = "times";
 
                 if (correctCount == 1)
                 {
-                    timesGrammar = "time";
+                    timesOrTimeSpelling = "time";
                 }
 
                 if (headsOrTailsGuess.Equals("heads") | headsOrTailsGuess.Equals("tails"))
                 {
-                    Console.WriteLine($"Your guess, {headsOrTailsGuess}, came up {correctCount} {timesGrammar}.");
+                    Console.WriteLine($"Your guess, {headsOrTailsGuess}, came up {correctCount} {timesOrTimeSpelling}.");
                     Console.WriteLine($"That's {ProcessScore()}%.");
                     Console.WriteLine("\n");
                 }
