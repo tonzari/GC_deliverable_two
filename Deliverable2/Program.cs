@@ -25,13 +25,22 @@ namespace Deliverable2
                 headsOrTailsGuess = Console.ReadLine();
                 Console.Write("How many times shall we flip a coin? ");
                 numberOfFlipsInput = Console.ReadLine();
+                
+                //Filter out non-numeric values
                 if (Int32.TryParse(numberOfFlipsInput, out int result))
                 {
                     numberOfFlips = result;
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a number next time.");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Please enter a valid number.");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Press any key to try again...");
+                    Console.ReadKey(true);
+                    Console.WriteLine("\n");
+
+                    GetUserInput();
                 }
 
                 Console.WriteLine("\n");
